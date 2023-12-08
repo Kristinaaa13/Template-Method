@@ -1,0 +1,33 @@
+from abc import ABC, abstractmethod
+
+class AbstractClass(ABC):
+    def template_method(self):
+        self.base_operation1()
+        self.required_operation1()
+        self.base_operation2()
+        self.hook()
+
+    @abstractmethod
+    def required_operation1(self):
+        pass
+
+    @abstractmethod
+    def hook(self):
+        pass
+
+    def base_operation1(self):
+        print("Операція 1 (загальна для всіх підкласів)")
+
+    def base_operation2(self):
+        print("Операція 2 (загальна для всіх підкласів)")
+
+class ConcreteClass(AbstractClass):
+    def required_operation1(self):
+        print("Виконання операції 1 у конкретному класі")
+
+    def hook(self):
+        print("Виконання додаткової операції у конкретному класі (необов'язково)")
+
+# Використання
+concrete_instance = ConcreteClass()
+concrete_instance.template_method()
